@@ -27,7 +27,7 @@ A atividade atesta a capacidade do aluno de fazer um portfolio básico conteiner
 
 ## Como Rodar o Projeto
 ### Localmente
-Faznedo o build da imagem contida arquivo Dockerfile, o projeto pode ser executado com o seguinte comando em um terminal de sua preferência:
+Fazendo a build da imagem contida arquivo Dockerfile, o projeto pode ser executado com o seguinte comando em um terminal de sua preferência:
 ```
 docker build -t <nome-da-sua-imagem> .
 docker run -d --name <nome-do-seu-container> -p 80:80 <nome-da-sua-imagem>
