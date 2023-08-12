@@ -30,7 +30,7 @@ A atividade atesta a capacidade do aluno de fazer um portfolio básico conteiner
 Faznedo o build da imagem contida arquivo Dockerfile, o projeto pode ser executado com o seguinte comando em um terminal de sua preferência:
 ```
 docker build -t <nome-da-sua-imagem> .
-docker run -d -p 80:80 <nome-da-sua-imagem>
+docker run -d --name <nome-do-seu-container> -p 80:80 <nome-da-sua-imagem>
 ```
 Após isso, projeto pode ser acessado em **[localhost](http://localhost:80)**.
 
@@ -38,7 +38,7 @@ Após isso, projeto pode ser acessado em **[localhost](http://localhost:80)**.
 Fazendo o pull da imagem contido no Docker Hub, **[Curriculum Vitae](https://hub.docker.com/r/cmtabr/curriculum-vitae)**, o projeto pode ser executado com o seguinte comando em um terminal de sua preferência:
 ```
 docker pull cmtabr/curriculum-vitae:v0.0.1
-docker run -d --name <nome-do-seu-container> -p 80:80 cmtabr/curriculum-vitae:v0.0.1
+docker run -d -p 80:80 cmtabr/curriculum-vitae:v0.0.1
 ```
 Após isso, projeto pode ser acessado em **[localhost](http://localhost:80)**.
 
