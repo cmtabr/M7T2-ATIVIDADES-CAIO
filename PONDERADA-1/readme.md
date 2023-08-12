@@ -23,7 +23,9 @@ Caio Martins de Abreu | Engenharia da Computação | 7 | 2
  ┗ 📜requirements.txt
 ```
 ## Explicação do Projeto
-A atividade atesta a capacidade do aluno de fazer um portfolio básico conteinerizado com Docker. O projeto foi realizado utilizando Python, o framework FastAPI e o template engine Jinja2 para servir os arquivos estáticos. 
+A atividade atesta a capacidade do aluno de fazer um portfolio básico conteinerizado com Docker. O projeto foi realizado utilizando Python, o framework FastAPI e o template engine Jinja2 para servir os arquivos estáticos.
+
+**Link para o DockerHub**: https://hub.docker.com/r/cmtabr/curriculum-vitae
 
 ## Como Rodar o Projeto
 ### Localmente
