@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='css/styles.css')}}">
+</head>
+<body>
+    </header>
+    <div class="container">
+        <div class="login-page">
+            <div class="form">
+                <h1>Adicionar To-Do</h1>
+                <form action="/api/create_todo" method="POST">
+                    <label for="task">Tarefa:</label>
+                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                    <input type="text" id="task" name="task" required><br>
+                    <label for="description">Descrção:</label>
+                    <input type="text" id="description" name="description" required><br>
+                    <label for="status">Status:</label>
+                    <input type="number" id="status" name="status" required><br>
+                    <label for="priority">Prioridade:</label>
+                    <input type="number" id="priority" name="priority" required><br>
+                    <button type="submit">Adicionar Tarefa</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

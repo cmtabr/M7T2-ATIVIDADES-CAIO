@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='css/styles.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+            <div class="login">
+            <div class="login-header">
+                <h3>LOGIN</h3>
+                <p>Insira suas credenciais.</p>
+            </div>
+            </div>
+            <form action="/api/login" method="POST" class="login-form">
+                <input type="text" name="username" placeholder="test">
+                <input type="password" name="password" placeholder="test123">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
