@@ -12,7 +12,6 @@
                 <h1>Adicionar To-Do</h1>
                 <form action="/api/create_todo" method="POST">
                     <label for="task">Tarefa:</label>
-                    <input type="hidden" name="user_id" value="{{ user_id }}">
                     <input type="text" id="task" name="task" required><br>
                     <label for="description">Descrção:</label>
                     <input type="text" id="description" name="description" required><br>

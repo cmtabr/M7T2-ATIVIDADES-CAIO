@@ -28,11 +28,10 @@ def signJWT(userId : int):
 def decodeJWT(token: str):
     try:
         decode_token = jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
-        if decode_token['expires'] >= time.time():
+        if decode_token["expires"] >= time.time():
+            print(f'Token válido: {decode_token}')
             return decode_token
-        else:
-            return None
     except jwt.ExpiredSignatureError:
-        return None
+        return f'Token expirado: {decode_token}'
     except jwt.DecodeError:
-        return None
+        return f'Erro no decode: {decode_token}'

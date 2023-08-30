@@ -2,10 +2,12 @@ version: '3.9'
 
 services: 
   api: 
+    image: cmtabr/api
     build: 
       context: ./api
       dockerfile: Dockerfile
-    container_name: api
+    container_name: backend
+    restart: always
     ports: 
       - "5000:5000"
     volumes: 
@@ -14,7 +16,7 @@ services:
       - database
 
   database:
-    image: db
+    image: cmtabr/db
     build: 
         context: ./database
         dockerfile: Dockerfile

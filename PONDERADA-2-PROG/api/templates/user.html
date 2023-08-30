@@ -42,17 +42,190 @@
         .add-button:hover {
             background-color: #08ac4b;
         }
+        .delete-button{
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background-color: #e74c3c;
+            border: 0;
+            padding: 10px 15px;
+            color: #FFFFFF;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            margin-left: 10px; 
+        }
+
+        .delete-button:hover{
+            background-color: #c0392b;
+        }
+
+        .edit-button {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background-color: #f39c12; /* Yellow background color */
+            border: 0;
+            padding: 10px 15px;
+            color: #FFFFFF;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            margin-left: 10px; /* Add some space between buttons */
+        }
+
+        .edit-button:hover {
+            background-color: #d68910; /* Darker yellow on hover */
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .task-buttons {
+            display: flex;
+            align-items: center;
+        }
+        dialog {
+            margin: 0;
+            padding: 0;
+            display: block; /* Show dialog by default */
+        }
+
+        dialog:not(:target):not([open]) {
+            display: none;
+        }
+
+        /* Styles for the modal content */
+        .modal-content {
+            position: relative;
+            width: 300px;
+            max-width: 80%; /* Improved responsiveness */
+            margin: 0 auto; /* Center the modal horizontally */
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styles for the modal header */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px; /* Improved spacing */
+        }
+
+        .modal-title {
+            margin: 0;
+            font-size: 18px; /* Increased font size for title */
+        }
+
+        .modal-close {
+            border: none;
+            background: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888; /* Improved color for close button */
+            transition: color 0.2s; /* Smooth color transition on hover */
+        }
+
+        .modal-close:hover {
+            color: #333; /* Darker color on hover */
+        }
+
+        /* Styles for form inputs */
+        .form-group {
+            margin-bottom: 15px; /* Improved spacing between form groups */
+        }
+
+        label {
+            font-weight: bold; /* Make labels more prominent */
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #6c63ff; /* Highlight input on focus */
+        }
+
+        /* Style for save button */
+        .btn-primary {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #534edf; /* Darker shade on hover */
+        }
     </style>
 </head>
 <body>
     <div class="container-user">
-        <h1 class="title">My Personalized ToDo List</h1>
+        <h1 class="title">Minha Lista de Tarefas</h1>
         <ul id="task-list">
             {% for task in tasks %}
-            <li>{{ task[1] }} - {{ task[2] }} (Status: {{ task[3] }}, Priority: {{ task[4] }}, Deadline: {{ task[5] }})</li>
+            <li class="task-item">
+                Tarefa:{{ task[1] }},  Descrição: {{ task[2] }}, Status: {{ task[3] }}, Prioridade: {{ task[4] }}
+                <div class="task-buttons">
+                <a href="#editModal{{ task[0] }}" class="edit-button">Edit</a>
+                <form action="/api/delete/{{ task[0] }}" method="post" style="display: inline;">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+                </div>
+            </li>
             {% endfor %}
         </ul>
-        <button class="add-button">Add New ToDo</button>
+        {% for task in tasks %}
+        <dialog id="editModal{{ task[0] }}">
+            <form action="/api/update/{{ task[0] }}" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Task</h5>
+                        <a href="#" class="modal-close" id="closeModal{{ task[0] }}">×</a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="tarefa{{ task[0] }}">Tarefa:</label>
+                            <input type="text" class="form-control" id="task{{ task[0] }}" name="task" value="{{ task[1] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="status{{ task[0] }}">Descrição:</label>
+                            <input type="text" class="form-control" id="description{{ task[0] }}" name="description" value="{{ task[2] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="status{{ task[0] }}">Status:</label>
+                            <input type="number" class="form-control" id="status{{ task[0] }}" name="status" value="{{ task[3] }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="priority{{ task[0] }}">Priority:</label>
+                            <input type="number" class="form-control" id="priority{{ task[0] }}" name="priority" value="{{ task[4] }}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </form>
+        </dialog>
+        {% endfor %}
+        <a href=add_new>
+            <button action="/todo" class="add-button">Adicionar Tarefa</button>
+        </a>
     </div>
 </body>
 </html>
