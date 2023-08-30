@@ -56,7 +56,8 @@ docker compose up -d --build
 ```
 Após isso, projeto pode ser acessado em **[localhost](http://localhost:5000)**.
 
+> [!NOTE]  
+> As imagens utilizadas podem ser acessadas nos dockerhub nos links **[database](https://hub.docker.com/r/cmtabr/db)** e **[api](https://hub.docker.com/r/cmtabr/api)**
+
 > [!WARNING]
-> Tive muitos problemas com o banco de dados, backend sempre iniciando antes da aplicação, a tag restart foi enderaçada como always.
->
-> Na parte da autenticação, o token é gerado, mas não é possível acessar as rotas protegidas, pois o backend não consegue validar o token. Não peguei bem a ideia de como fazer funcionar.
+> Tive alguns problemas com o banco de dados, backend sempre iniciando previamente, desta forma a tag restart foi enderaçada como always para reiniciar a aplicação até que o banco tenha sido construído.
