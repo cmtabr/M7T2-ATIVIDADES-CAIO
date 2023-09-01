@@ -4,7 +4,7 @@ name: p1
 
 services:
   backend: 
-    image: p1/backend
+    image: cmtabr/backend-p1
     build: 
       context: ./backend
       dockerfile: Dockerfile
@@ -14,7 +14,7 @@ services:
       - "5000:5000"
     
   frontend: 
-    image: p1/frontend
+    image: cmtabr/frontend-p1
     build: 
       context: ./frontend
       dockerfile: Dockerfile
