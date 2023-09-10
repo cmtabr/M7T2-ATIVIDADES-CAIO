@@ -4,12 +4,14 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import pickle
 
+# Modelo de dados pydantic 
+from .models import MlBody
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
-
 
 @app.get("/")
 def index(request: Request):
@@ -19,7 +21,7 @@ def index(request: Request):
 async def predict(request: Request):
     try:
         data = await request.json()
-        model = pickle.load(open('model.pkl', 'rb'))
+        model = pickle.load(open('./ml/model.pkl', 'rb'))
         prediction = model.predict(data)
         return JSONResponse(status_code=status.HTTP_200_OK, content=prediction)
     except Exception as e:
