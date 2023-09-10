@@ -48,13 +48,13 @@ Após isso, a aplicação estará disponível em [Local Host](http://localhost:8
 ### Instruções para Execução em Nuvem
 Para executar a aplicação em nuvem, bastaria acessar o seguinte link: [WebApp](https://ec2-18-208-172-6.compute-1.amazonaws.com:8000). Porém, devido a problemas com o Router 53, não foi possível realizar o deploy em nuvem. 
 
->[!WARNING] 
+> [!WARNING] 
 > O vídeo abaixo contém cenas fortíssimas de não entendimento do que está acotencendo na AWS
 
 [Screencast from 2023-09-10 13-45-02.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/cbd032d0-3109-42ce-a270-fbaf64f7b67a)
 
->[!NOTE]
->Como foi possível visualizar, a subnet está bloqueada, não permitindo o host de um domínio, bem como seu acesso por quaisquer outros meios, em decorrência da falta de permissionamento na ferramenta Route 53.
+> [!NOTE]
+> Como foi possível visualizar, a subnet está bloqueada, não permitindo o host de um domínio, bem como seu acesso por quaisquer outros meios, em decorrência da falta de permissionamento na ferramenta Route 53.
 >Não pude realizar esta parte da atividade, ainda que quisesse, devido à este inconveniente, tentei por outros métodos, como o S3, ECS e LightSail, mas nada adiantou muito.
 
 
