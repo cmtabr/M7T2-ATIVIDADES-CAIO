@@ -1,11 +1,8 @@
-from fastapi import FastAPI, Request, Response, status
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, Request, Response, status, Form
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import pickle
-
-# Modelo de dados pydantic 
-from .models import MlBody
 
 app = FastAPI()
 
@@ -17,13 +14,28 @@ templates = Jinja2Templates(directory="templates")
 def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.post("/predict")
-async def predict(request: Request):
+@app.post("/predict", response_class=HTMLResponse)
+async def predict(request: Request, age: int = Form(...), hypertension: int = Form(...), heart_disease: int = Form(...), work_type: int = Form(...), avg_glucose_level: float = Form(...), bmi: float = Form(...)):
     try:
-        data = await request.json()
+        input_data = [[
+            age,
+            hypertension,
+            heart_disease,
+            work_type,
+            avg_glucose_level,
+            bmi
+        ]]
         model = pickle.load(open('./ml/model.pkl', 'rb'))
-        prediction = model.predict(data)
-        return JSONResponse(status_code=status.HTTP_200_OK, content=prediction)
+        prediction = model.predict_proba(input_data)[0]
+        prob_classe_1 = prediction[1]
+        threshold = 0.5 
+        if prob_classe_1 >= threshold:
+            prediction_result = "Positivo"
+        else:
+            prediction_result = "Negativo"
+
+        # Render the HTML template with the prediction result
+        return templates.TemplateResponse("index.html", {"request": request, "prediction": prediction_result})
     except Exception as e:
-        return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={"message": str(e)})
+        return HTMLResponse(content=f"<html><body>Error: {str(e)}</body></html>", status_code=500)
     
