@@ -41,9 +41,10 @@ docker pull cmtabr/pda-3
 docker run -d -p 80:80 cmtabr/pda-3
 ```
 
-[Screencast from 2023-09-10 13-22-29.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/bbd8ecd3-0a62-4855-a005-9658b1976bac)
+[Screencast from 2023-09-10 14-25-32.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/647172f6-c231-466f-a9e9-fe3f5a270ead)
 
-Após isso, a aplicação estará disponível em [Local Host](http://localhost:80)
+
+Após isso, a aplicação estará disponível em [Local Host](http://localhost:8000)
 
 ### Instruções para Execução em Nuvem
 Para executar a aplicação em nuvem, bastaria acessar o seguinte link: [WebApp](https://ec2-18-208-172-6.compute-1.amazonaws.com:8000). Porém, devido a problemas com o Router 53, não foi possível realizar o deploy em nuvem. 
