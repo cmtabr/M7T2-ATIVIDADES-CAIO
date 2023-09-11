@@ -47,13 +47,18 @@ docker run -d -p 80:80 cmtabr/pda-3
 Após isso, a aplicação estará disponível em [Local Host](http://localhost:8000)
 
 ### Instruções para Execução em Nuvem
-Para executar a aplicação em nuvem, bastaria acessar o seguinte link: [WebApp](https://ec2-18-208-172-6.compute-1.amazonaws.com:8000). Porém, devido a problemas com o Router 53, não foi possível realizar o deploy em nuvem. 
+Para executar a aplicação em nuvem, devemos primeiramente nos conectar a instância EC2, configurada com o Docker, rodar os seguintes comandos:
+```
+docker pull cmtabr/pda-3
+docker run -dp 80:8000 cmtabr/pda-3
+```
+
+E então acessar o IPV4 público da instância, lembrando de trocar o protocolo de https para http e adicionar ":80" à URL, a porta mapeada para nossa aplicação e então acessá-la.
 
 > [!NOTE] 
-> O vídeo abaixo demonstra o funcionamento da aws
+> O vídeo abaixo demonstra o funcionamento da aplicação na aws e o passo a passo citado acima.
 
-[Screencast from 2023-09-10 13-45-02.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/cbd032d0-3109-42ce-a270-fbaf64f7b67a)
-
+[Screencast from 2023-09-11 20-43-18.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/00c8d37a-7930-4096-9d29-bf82d360cbfd)
 
 ## Referências
 - [FastAPI](https://fastapi.tiangolo.com/)
