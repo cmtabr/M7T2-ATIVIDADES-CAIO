@@ -15,8 +15,8 @@ Caio Martins de Abreu | Engenharia da Computação | 7 | 2
  ┣ 📂ml
  ┃ ┗ 📜model.pkl
  ┣ 📂static
- ┃ ┗ 📂static
- ┃   ┗ 📜css
+ ┃ ┗ 📂css
+ ┃   ┗ 📜style.css
  ┣ 📂templates
  ┃ ┗📜index.html
  ┣ 📜.dockerignore
