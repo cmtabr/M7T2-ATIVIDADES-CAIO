@@ -58,7 +58,7 @@ E então acessar o IPV4 público da instância, lembrando de trocar o protocolo 
 > [!NOTE] 
 > O vídeo abaixo demonstra o funcionamento da aplicação na aws e o passo a passo citado acima.
 
-[Screencast from 2023-09-11 20-43-18.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/00c8d37a-7930-4096-9d29-bf82d360cbfd)
+[Screencast from 2023-09-11 20-57-58.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/8f8344ba-bc05-4083-9e9f-8499d17d51ea)
 
 ## Referências
 - [FastAPI](https://fastapi.tiangolo.com/)
