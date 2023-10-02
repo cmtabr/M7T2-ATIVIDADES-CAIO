@@ -2,9 +2,12 @@
 from fastapi import FastAPI, HTTPException, status, Request, Response
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy import insert, select, update, delete, ExceptionContext
 import pickle
 import json
+
+auth2schema = OAuth2PasswordBearer(tokenUrl="token")
 
 # Local packages
 from config.db import conn, engine, base
@@ -107,13 +110,17 @@ async def predict(data: predicted_schema.PredictModel):
     finally:
         conn.close()
 
-@app.route('/embed-data', methods=['GET'])
+@app.get('/embed-data')
 async def embed_data():
-    query = select(predicted.PredictTable).fetchall()
+    query = select(predicted.PredictTable).where(predicted.PredictTable.userId == 2)
     try:
-        result = conn.execute(query)
-        return result
+        result = conn.execute(query).fetchall()
+        print(result)
+        # Convert the result to a list of dictionaries
+        data_list = [list(row) for row in result]
+
+        return data_list
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=403, detail=str(e))
     finally:
         conn.close()
