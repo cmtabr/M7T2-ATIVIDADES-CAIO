@@ -8,7 +8,7 @@ class PredictModel(BaseModel):
     work_type: int = Field(..., title="Work Type")
     avg_glucose_level: float = Field(..., title="Average Glucose Level")
     bmi: float = Field(..., title="BMI")
-    userId: int = Field(..., title="User ID")
+    token: str = Field(..., title="token")
 
     class Config:
         json_schema_extra = {

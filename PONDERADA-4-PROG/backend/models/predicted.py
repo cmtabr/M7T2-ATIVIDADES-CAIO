@@ -1,5 +1,4 @@
 from sqlalchemy import Table, Column, Integer, String, Float, ForeignKey
-from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import mapped_column
 from config.db import base
 
@@ -12,7 +11,7 @@ class PredictTable(base):
     work_type = Column(Integer, nullable=False)
     avg_glucose_level = Column(Float, nullable=False)
     bmi = Column(Float, nullable=False)
-    predicted = Column(Integer, nullable=False)
+    predicted = Column(String(32), nullable=False)
     userId = mapped_column(Integer, ForeignKey('user.userId'))
 
     def __init__(self, age, hypertension, heart_disease, work_type, avg_glucose_level, bmi, predicted):
