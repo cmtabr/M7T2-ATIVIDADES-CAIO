@@ -42,4 +42,5 @@ Ainda sim cabe dizer que é necessário configurar o grupo de segurança com as 
 
 # Resultado
 Dito isso, segue o resultado final:
+
 [Screencast from 2023-10-02 05-29-09.webm](https://github.com/cmtabr/M7T2-ATIVIDADES-CAIO/assets/99201276/a4a9593f-578c-4d7e-82ca-fd3a79810c03)
