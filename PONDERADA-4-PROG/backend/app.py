@@ -111,8 +111,11 @@ async def predict(data: predicted_schema.PredictModel):
         conn.close()
 
 @app.get('/embed-data')
-async def embed_data():
-    query = select(predicted.PredictTable).where(predicted.PredictTable.userId == 2)
+async def embed_data(request: Request):
+    token = request.cookies.get("access_token") 
+    token = decodeJWT(token) 
+    name = token.get("sub")
+    query = select(predicted.PredictTable).where(predicted.PredictTable.name == name)
     try:
         result = conn.execute(query).fetchall()
         print(result)
